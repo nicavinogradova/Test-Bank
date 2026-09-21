@@ -17,8 +17,8 @@ class TestCreateUser:
                                db_session: Session):
         response = api_manager.admin_steps.create_user(create_user_request)
 
-        assert create_user_request.username == response.username
-        assert create_user_request.role == response.role
+        assert create_user_request.username == response.username, 'Username не создан/ не соответствует запросу'
+        assert create_user_request.role == response.role, 'Role не создана/ не соответствует запросу'
 
         user_from_db = User.get_user_by_username(db_session, create_user_request.username)
         assert user_from_db.username == create_user_request.username, 'Пользователь не найден в БД, ошибка'
