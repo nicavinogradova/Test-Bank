@@ -79,7 +79,7 @@ class UserSteps(BaseSteps):
         CrudRequester(
             RequestSpecs.auth_headers(username=create_user_request.username, password=create_user_request.password),
             Endpoint.TRANSFER,
-            ResponseSpecs.request_unprocessable()
+            ResponseSpecs.request_bad()
         ).post(transfer_acc_request)
 
     def credit_repay_positive(self, create_user_credit_request: CreateUserRequest,

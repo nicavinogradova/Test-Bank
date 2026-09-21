@@ -11,11 +11,11 @@ class TestUserLogin:
 
         response = api_manager.admin_steps.login_user(login_user_request)
 
-        assert login_user_request.username == response.user.username
-        assert response.user.role == "ROLE_ADMIN"
+        assert login_user_request.username == response.user.username, 'Username при логине не соответствует запросу'
+        assert response.user.role == "ROLE_ADMIN", 'Role при логине не соответствует запросу'
 
     def test_login_user(self, api_manager: ApiManager, create_user_request: CreateUserRequest):
         response = api_manager.admin_steps.login_user(create_user_request)
 
-        assert create_user_request.username == response.user.username
-        assert response.user.role == "ROLE_USER"
+        assert create_user_request.username == response.user.username, 'Username при логине не соответствует запросу'
+        assert response.user.role == "ROLE_USER", 'Role при логине не соответствует запросу'
